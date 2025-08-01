@@ -1,14 +1,16 @@
 import { NavigationContainer } from '@react-navigation/native';
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { AuthProvider } from './src/context/auth';
+import Routes from './src/routes';
+
 
 export default function App() {
   return (
     <NavigationContainer>
       <StatusBar style="auto" hidden={true} />
-      <View>
-        <Text>Welcome to the App!</Text>
-      </View>
+      <AuthProvider>
+        <Routes />
+      </AuthProvider>
     </NavigationContainer>
   );
 }
