@@ -35,10 +35,8 @@ export default function SignInScreen() {
       if (response.data?.token) {
         //Guarda o token no cabeçário para reaproveitar na aplicação:
         const dados = await response.data;
-        api.defaults.headers.common['authorization'] = "Bearer " + response.data.token;
-        // setUser(response.data)
-        signIn(dados.name)
-        alert("Login successful!");
+        api.defaults.headers.common['authorization'] = "Bearer " + response.data.token;        
+        signIn(dados.name)        
       }
     } catch (error) {
       if (error.response?.data.error)

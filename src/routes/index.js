@@ -1,9 +1,10 @@
 import React, { useContext } from 'react';
 import { StyleSheet, View } from 'react-native';
 import { AuthContext } from '../context/auth.js';
+
+// Routes.jsx
 import PublicRoutes from './publicRoutes.js';
-import SignInScreen from '../screens/signin/index.js';
-import Home from '../screens/home/index.js';
+import ProtectedRoutes from './privateRoutes.js';
 
 const Routes = (props) => {
     const { user } = useContext(AuthContext);

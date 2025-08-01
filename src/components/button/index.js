@@ -22,12 +22,3 @@ function Button(props) {
 }
 
 export default Button;
-// <TouchableOpacity
-//     style={[ButtonStyles.btn,
-//     props.theme == "danger" ?
-//         ButtonStyles.danger : ButtonStyles.primary]}
-//     onPress={props.onPress} >
-//     <Text style={ButtonStyles.text}>
-//         {props.text}
-//     </Text>
-// </TouchableOpacity>
