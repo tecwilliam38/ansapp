@@ -14,6 +14,7 @@ const Tab = createBottomTabNavigator();
 
 function Main() {
     return <Tab.Navigator screenOptions={{
+        tabBarStyle: { backgroundColor: COLORS.green3 },
         headerShown: false,
     }}>
         <Tab.Screen name="Calendar" component={Home} options={{
@@ -24,7 +25,11 @@ function Main() {
                     {
                         width: 25,
                         height: 25,
-                        opacity: focused ? 1 : 0.3
+                        textDecorationLine: focused ? "underline" : "none",
+                        borderColor: focused ? COLORS.white : "transparent",
+                        borderWidth: focused ? 1 : 0,
+                        borderRadius: focused ? 12.5 : 0,
+                        opacity: focused ? 1 : 0.8
                     }
                 } />
             }
@@ -39,7 +44,11 @@ function Main() {
                     {
                         width: 25,
                         height: 25,
-                        opacity: focused ? 1 : 0.3,
+                        textDecorationLine: focused ? "underline" : "none",
+                        borderColor: focused ? COLORS.white : "transparent",
+                        borderWidth: focused ? 1 : 0,
+                        borderRadius: focused ? 12.5 : 0,
+                        opacity: focused ? 1 : 0.8,
                         color: focused ? COLORS.red : COLORS.red,
                     }
                 } />
@@ -50,11 +59,15 @@ function Main() {
             headerShown: false,
             tabBarShowLabel: false,
             tabBarIcon: ({ focused }) => {
-                return <Image source={icon.profile}  style={
+                return <Image source={icon.profile} style={
                     {
                         width: 25,
                         height: 25,
-                        opacity: focused ? 1 : 0.3,
+                        textDecorationLine: focused ? "underline" : "none",
+                        borderColor: focused ? COLORS.white : "transparent",
+                        borderWidth: focused ? 1 : 0,
+                        borderRadius: focused ? 12.5 : 0,
+                        opacity: focused ? 1 : 0.8,
                         color: focused ? COLORS.red : COLORS.red,
                     }
                 } />
