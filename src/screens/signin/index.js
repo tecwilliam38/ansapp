@@ -20,8 +20,8 @@ export default function SignInScreen() {
     input, footer, footerText, footerLink } = SignInStyles;
   const bgLogin = require("../../assets/anslogin.png");
 
-  const [email, setEmail] = useState("teste01@gmail.com");
-  const [password, setPassword] = useState("123456");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
   const [showPass, setShowPass] = useState(true);
   const { setUser, signIn } = useContext(AuthContext);
 
