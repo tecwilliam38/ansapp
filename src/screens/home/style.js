@@ -24,15 +24,26 @@ export const homeStyles = StyleSheet.create({
     },
     imageHeader: {
         flex: 1,
-        justifyContent: "flex-end",
+        justifyContent: "space-between",
         alignItems: "flex-end",
-        resizeMode: "cover"
+        resizeMode: "cover",
+        position: "relative",        
+        flexDirection: "row",
+        width: "100%",
     },
     headerText:{
         textAlign:"right",
         paddingRight:10,
-        paddingBottom:10,
+        paddingBottom:5,
         color:"#fff",
+    },
+    headerTextTop:{                
+        textAlign:"left",
+        justifyContent:"flex-start",
+        color:"#fff",
+        fontSize: 16, 
+        paddingBottom: 5,        
+        paddingLeft:10,
     },
     bgHomeStyle:{
         display: "flex",

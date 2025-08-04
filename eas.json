@@ -9,8 +9,10 @@
       "distribution": "internal"
     },
     "preview": {
+      "distribution": "internal",
       "android": {
-        "buildType": "apk"
+        "buildType": "apk",
+         "resourceClass": "medium"
       },
       // "android": {
       //   "buildType": "aab" para playstore
@@ -22,6 +24,8 @@
     }
   },
   "submit": {
-    "production": {}
+    "production": {
+           "node": "18.18.0"
+    }
   }
 }

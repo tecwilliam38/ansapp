@@ -3,15 +3,35 @@ import { StatusBar } from 'expo-status-bar';
 import { AuthProvider } from './src/context/auth';
 import Routes from './src/routes';
 
+import { useEffect } from 'react';
+import * as SplashScreen from 'expo-splash-screen';
+import * as Font from 'expo-font';
+
+SplashScreen.preventAutoHideAsync();
+
 
 export default function App() {
+  //  const [loaded] = useFonts({
+  //   SpaceMono: require('../assets/fonts/SpaceMono-Regular.ttf'),
+  // });
+  useEffect(() => {
+    const prepare = async () => {
+      // Simula carregamento
+      await new Promise(resolve => setTimeout(resolve, 2000));
+      await SplashScreen.hideAsync();
+    };
+    prepare();
+  }, []);
+
   return (
-    <NavigationContainer>
-      <StatusBar style="auto" hidden={true} />
-      <AuthProvider>
-        <Routes />
-      </AuthProvider>
-    </NavigationContainer>
+    <>
+      <StatusBar hidden={true} />
+      <NavigationContainer>
+        <AuthProvider>
+          <Routes />
+        </AuthProvider>
+      </NavigationContainer>
+    </>
   );
 }
 

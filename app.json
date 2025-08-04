@@ -1,15 +1,15 @@
 {
   "expo": {
-    "name": "ansapp",
+    "name": "ans",
     "slug": "ansapp",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/icon.png",
+    "icon": "./assets/splash.png",
     "userInterfaceStyle": "light",
     "newArchEnabled": true,
     "splash": {
       "image": "./assets/splash.png",
-      "resizeMode": "contain",
+      "resizeMode": "cover",
       "backgroundColor": "#fff" 
     },
     "ios": {
@@ -30,6 +30,16 @@
       "eas": {
         "projectId": "bb1999ff-1165-4ec6-b78e-b950e05b5d21"
       }
-    }
+    },
+     "plugins": [
+      [
+        "expo-splash-screen",
+        {
+          "backgroundColor": "#fff",
+          "image": "./assets/splash.png",          
+          "imageWidth": 200
+        }
+      ]
+    ]
   }
 }

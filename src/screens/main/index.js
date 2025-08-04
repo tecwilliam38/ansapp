@@ -7,6 +7,7 @@ import { COLORS } from "../../context/constants.js";
 // import AbaCalendar from "../abacalendar";
 import icon from "../../context/icon.js";
 import Home from "../home/index.js";
+import AbaCalendar from "../appointments/index.js";
 // import AbaHome from "../abahome";
 
 
@@ -27,7 +28,7 @@ function Main() {
                         height: 25,
                         textDecorationLine: focused ? "underline" : "none",
                         borderColor: focused ? COLORS.white : "transparent",
-                        borderWidth: focused ? 1 : 0,
+                        borderWidth: focused ? 2 : 0,
                         borderRadius: focused ? 12.5 : 0,
                         opacity: focused ? 1 : 0.8
                     }
@@ -35,7 +36,7 @@ function Main() {
             }
         }} />
 
-        <Tab.Screen name="Home" component={Home} options={{
+        <Tab.Screen name="Home" component={AbaCalendar} options={{
             headerTitleAlign: "center",
             headerShown: false,
             tabBarShowLabel: false,
@@ -46,7 +47,7 @@ function Main() {
                         height: 25,
                         textDecorationLine: focused ? "underline" : "none",
                         borderColor: focused ? COLORS.white : "transparent",
-                        borderWidth: focused ? 1 : 0,
+                        borderWidth: focused ? 2 : 0,
                         borderRadius: focused ? 12.5 : 0,
                         opacity: focused ? 1 : 0.8,
                         color: focused ? COLORS.red : COLORS.red,
@@ -65,7 +66,7 @@ function Main() {
                         height: 25,
                         textDecorationLine: focused ? "underline" : "none",
                         borderColor: focused ? COLORS.white : "transparent",
-                        borderWidth: focused ? 1 : 0,
+                        borderWidth: focused ? 2 : 0,
                         borderRadius: focused ? 12.5 : 0,
                         opacity: focused ? 1 : 0.8,
                         color: focused ? COLORS.red : COLORS.red,

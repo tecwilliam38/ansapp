@@ -13,6 +13,7 @@ import { SignInStyles } from './style'
 import Button from '../../components/button';
 import api from '../../context/api';
 import { AuthContext } from '../../context/auth';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 export default function SignInScreen() {
 
@@ -35,8 +36,9 @@ export default function SignInScreen() {
       if (response.data?.token) {
         //Guarda o token no cabeçário para reaproveitar na aplicação:
         const dados = await response.data;
-        api.defaults.headers.common['authorization'] = "Bearer " + response.data.token;        
-        signIn(dados.name)        
+        // api.defaults.headers.common['authorization'] = "Bearer " + response.data.token;
+        api.defaults.headers.common['authorization'] = "Bearer " + dados.token;             
+        signIn(dados)
       }
     } catch (error) {
       if (error.response?.data.error)
@@ -54,7 +56,7 @@ export default function SignInScreen() {
               style={keyboardStyle}>
               <Input
                 placeholderTextColor={"#222"}
-                inputStyle={{ color: "#333",fontWeight:'bold', marginLeft: 10, width: '100%' }}
+                inputStyle={{ color: "#333", fontWeight: 'bold', marginLeft: 10, width: '100%' }}
                 placeholder='E-mail'
                 value={email}
                 onChangeText={setEmail}
@@ -67,7 +69,7 @@ export default function SignInScreen() {
               <Input
                 placeholder='Password'
                 placeholderTextColor={"#222"}
-                inputStyle={{ color: "#333",fontWeight:'bold', marginLeft: 10 }}
+                inputStyle={{ color: "#333", fontWeight: 'bold', marginLeft: 10 }}
                 value={password}
                 onChangeText={setPassword}
                 secureTextEntry={showPass}

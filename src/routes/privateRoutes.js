@@ -5,6 +5,7 @@ import { COLORS } from "../context/constants.js";
 import { Image, StyleSheet } from "react-native";
 import Home from "../screens/home";
 import Main from "../screens/main/index.js";
+import AbaCalendar from "../screens/appointments/index.js";
 
 
 const Stack = createNativeStackNavigator()
@@ -14,9 +15,10 @@ function ProtectedRoutes() {
     return <Stack.Navigator screenOptions={{
         headerShown: false,
     }}>
+        
         <Stack.Screen name="Main" component={Main} />
        
-        <Stack.Screen name="Services" component={Home}
+        <Stack.Screen name="Services" component={AbaCalendar}
             options={{
                 headerBackground: () => (
                     <Image

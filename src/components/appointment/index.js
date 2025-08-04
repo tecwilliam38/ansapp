@@ -1,8 +1,9 @@
 
 import { Image, Text, View } from "react-native";
 import { styles } from "./style.js"
-import icon from "../../context/icon.js";
+// import icon from "../../context/icon.js";
 import Button from "../button/index.js"
+import icon from "../../context/icon.js";
 
 function Appointment(props) {    
     return (
@@ -26,7 +27,7 @@ function Appointment(props) {
                     </View>
 
                     <View style={{ alignItems: "center" }}>
-                        <Text style={styles.name}>{props.barber}</Text>
+                        <Text style={styles.name}>{props.tecnico}</Text>
                         <Text style={styles.name}>Serviço: {props.service}</Text>
                     </View>
                 </View>
