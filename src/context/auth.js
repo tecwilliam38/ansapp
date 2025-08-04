@@ -25,7 +25,9 @@ export const AuthProvider = ({ children }) => {
       } catch (e) {
         console.error('Erro ao remover dados do usuário:', e);
       }
-      // setUser(null);
+      setTimeout(() => {
+        setUser(null);        
+      }, 3000);
     };
 
     useEffect(() => {

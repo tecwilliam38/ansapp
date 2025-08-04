@@ -13,7 +13,7 @@ export default function Home(props) {
   const [appointments, setAppointments] = useState([]);
   const [idTecnico, setIdTecnico] = useState(user); // Default value for idTecnico
 
-  const { user } = useAuth();
+  const { user, signOut } = useAuth();
   // const idTecnico = user?.id_tecnico || 1; // Use a default value if id_tecnico is not available
 
   async function LoadData() {
@@ -76,7 +76,7 @@ export default function Home(props) {
               <Image source={require("../../assets/clients.png")} style={{ width: 100, height: 100 }} />
               <Text style={text}>Clientes</Text>
             </TouchableOpacity>
-            <TouchableOpacity style={buttonBg}>
+            <TouchableOpacity style={buttonBg} onPress={signOut}>
               <Image source={require("../../assets/config.png")} style={{ width: 100, height: 100 }} />
               <Text style={text}>Config</Text>
             </TouchableOpacity>
