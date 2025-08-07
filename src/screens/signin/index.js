@@ -33,13 +33,11 @@ export default function SignInScreen() {
         email,
         password,
       })
-      if (response.data?.token) {
-        //Guarda o token no cabeçário para reaproveitar na aplicação:
-        const dados = await response.data;
-        // api.defaults.headers.common['authorization'] = "Bearer " + response.data.token;
-        api.defaults.headers.common['authorization'] = "Bearer " + dados.token;             
-        signIn(dados)
-      }
+        if (response.data) {
+                //Guarda o token no cabeçário para reaproveitar na aplicação:
+                api.defaults.headers.common['authorization'] = "Bearer " + response.data.token;
+                signIn(response.data)
+            }  
     } catch (error) {
       if (error.response?.data.error)
         console.log(error.response.data.error);

@@ -7,20 +7,20 @@ import Appointment from "../../components/appointment/index.js";
 import icon from "../../context/icon.js";
 import { styles } from "./style.js"
 import { useAuth } from "../../context/auth.js";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 function AbaCalendar(props) {
     const { container, text } = styles;
     const [appointments, setAppointments] = useState([]);
-    const [idTecnico, setIdTecnico] = useState(user); // Default value for idTecnico
-
+    const [idTecnico, setIdTecnico] = useState(); // Default value for idTecnico
     const { user } = useAuth();
 
-    async function LoadData() {
+    async function LoadData(user) {
         try {
             const response = await api.get("/appointments/listar/tecnico",
                 {
                     headers: { Authorization: `Bearer ${user.token}` },
-                    params: { id_tecnico: idTecnico }
+                   query:{ id_tecnico: user.id_tecnico }
                 }
             );
             if (response.data)
@@ -34,9 +34,7 @@ function AbaCalendar(props) {
 
     async function deleteData(id_appointment) {
         try {
-            const response = await api.delete("/appointments/" + id_appointment, {
-                headers: { Authorization: `Bearer ${user.token}` }
-            });
+            const response = await api.delete("/appointments/" + id_appointment);
             if (response.data?.id_appointment)
                 LoadData();
         } catch (error) {
@@ -47,18 +45,18 @@ function AbaCalendar(props) {
 
     useEffect(() => {
         LoadData();
-    },);
+    }, []);
 
     return (
         <>
             <View style={styles.headerBg}>
                 <ImageBackground style={styles.imageHeader} source={require("../../assets/logo.png")}>
-                    <Text style={styles.headerTextTop}>{user.email}</Text>
+                    <Text style={styles.headerTextTop}>{user.id_tecnico}</Text>
                     <Text style={styles.headerText}>V. 1.0.0</Text>
                 </ImageBackground>
             </View>
 
-            <View style={container}>              
+            <View style={container}>
                 {appointments == ""
                     ?
                     <>

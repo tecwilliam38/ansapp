@@ -5,10 +5,14 @@ import api from '../../context/api';
 import { useAuth } from '../../context/auth';
 
 import Appointment from '../../components/appointment/index';
+import { useNavigation } from '@react-navigation/native';
 
 
 
 export default function Home(props) {
+  // const navigation = useNavigation();
+
+  
   const { container, buttonLine, headerText, text, buttonBg, bgHomeStyle, headerBg, imageHeader, headerTextTop } = homeStyles;
   const [appointments, setAppointments] = useState([]);
   const [idTecnico, setIdTecnico] = useState(user); // Default value for idTecnico
@@ -16,22 +20,22 @@ export default function Home(props) {
   const { user, signOut } = useAuth();
   // const idTecnico = user?.id_tecnico || 1; // Use a default value if id_tecnico is not available
 
-  async function LoadData() {
-    try {
-      const response = await api.get("/appointments/listar/tecnico",
-        {
-          headers: { Authorization: `Bearer ${user.token}` },
-          params: { id_tecnico: idTecnico }
-        }
-      );
-      if (response.data)
-        setAppointments(response.data);
+  // async function LoadData() {
+  //   try {
+  //     const response = await api.get("/appointments/listar/tecnico/",
+  //       {
+  //         headers: { Authorization: `Bearer ${user.token}` },
+  //         params: { id_tecnico}
+  //       }
+  //     );
+  //     if (response.data)
+  //       setAppointments(response.data);
 
-    } catch (error) {
-      if (error.response?.data.error)
-        Alert.alert(error.response.data.error)
-    }
-  }
+  //   } catch (error) {
+  //     if (error.response?.data.error)
+  //       Alert.alert(error.response.data.error)
+  //   }
+  // }
 
   async function deleteData(id_appointment) {
     try {
@@ -46,11 +50,10 @@ export default function Home(props) {
     }
   }
   useEffect(() => {
-    LoadData();
+    // LoadData();
+    // console.log(user);
   },);
   
-
-
   return (
     <>
       <View style={headerBg}>
@@ -62,7 +65,7 @@ export default function Home(props) {
       <View style={container}>
         <ImageBackground source={require("../../assets/bgHome.png")} style={bgHomeStyle}>
           <View style={buttonLine}>              
-            <TouchableOpacity style={buttonBg} onPress={() => props.navigation.navigate("Services")}>
+            <TouchableOpacity style={buttonBg} onPress={() => props.navigation.navigate("Agenda")}>
               <Image source={require("../../assets/chamados.png")} style={{ width: 100, height: 100 }} />
               <Text style={text}>Chamados Agendados</Text>
             </TouchableOpacity>

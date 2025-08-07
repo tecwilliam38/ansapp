@@ -4,13 +4,8 @@ import React, { createContext, useContext, useEffect, useState } from 'react';
 export const AuthContext = createContext({});
 
 export const AuthProvider = ({ children }) => {
-  const [user, setUser] = useState(null);
+  const [user, setUser] = useState({});
 
-  // const userData = {
-  //   nome: dados.name,
-  //   email: dados.email,
-  //   token: dados.token, // token fictício
-  // };
   const signIn = async (dados) => {    
       await AsyncStorage.setItem('@user_data', JSON.stringify(dados));
       console.log('Login bem-sucedido e dados armazenados!');
