@@ -9,23 +9,21 @@
       "distribution": "internal"
     },
     "preview": {
-      "distribution": "internal",
       "android": {
-        "buildType": "apk",
-         "resourceClass": "medium"
+        "buildType": "apk"
       },
-      // "android": {
-      //   "buildType": "aab" para playstore
-      // },
       "distribution": "internal"
     },
     "production": {
+       "android": {
+        "buildType": "apk"
+      },
       "autoIncrement": true
     }
   },
   "submit": {
     "production": {
-           "node": "18.18.0"
+     
     }
   }
 }

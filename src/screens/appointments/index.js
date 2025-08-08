@@ -15,17 +15,19 @@ function AbaCalendar(props) {
     const [idTecnico, setIdTecnico] = useState(); // Default value for idTecnico
     const { user } = useAuth();
 
-    async function LoadData(user) {
+    async function LoadData() {
         try {
-            const response = await api.get("/appointments/listar/tecnico",
+            const response = await api.get("/appointments/listar",
                 {
                     headers: { Authorization: `Bearer ${user.token}` },
-                   query:{ id_tecnico: user.id_tecnico }
+                    params: { id_tecnico: idTecnico }
                 }
             );
-            if (response.data)
+            if (response.data) {
+                console.log("chegou aqui");
+                console.log("Dados recebidos:", response.data);
                 setAppointments(response.data);
-
+            }
         } catch (error) {
             if (error.response?.data.error)
                 Alert.alert(error.response.data.error)
@@ -44,20 +46,38 @@ function AbaCalendar(props) {
     }
 
     useEffect(() => {
+        setIdTecnico(user.id_tecnico);
         LoadData();
     }, []);
+
+    //     useEffect(() => {
+    //     if (user?.id_tecnico) {
+    //         setIdTecnico(user.id_tecnico);
+    //     }
+    // }, [user]);
+
+    // console.log("tecnico:",idTecnico);
+
+
+    // useEffect(() => {
+    //     if (idTecnico) {
+    //         LoadData();
+    //     }
+    // }, [idTecnico]);
+
 
     return (
         <>
             <View style={styles.headerBg}>
                 <ImageBackground style={styles.imageHeader} source={require("../../assets/logo.png")}>
-                    <Text style={styles.headerTextTop}>{user.id_tecnico}</Text>
+                    <Text style={styles.headerTextTop}>{user.name}</Text>
                     <Text style={styles.headerText}>V. 1.0.0</Text>
                 </ImageBackground>
             </View>
 
             <View style={container}>
-                {appointments == ""
+                {appointments.data}
+                {appointments.length === 0
                     ?
                     <>
                         <View style={{ flex: 1 }}>

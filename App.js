@@ -1,7 +1,9 @@
 import { NavigationContainer } from '@react-navigation/native';
 import { StatusBar } from 'expo-status-bar';
-import { AuthProvider } from './src/context/auth';
-import Routes from './src/routes';
+// import { AuthProvider } from './src/contexts/auth.js';
+import { AuthProvider } from './src/context/auth.js';
+// import Routes from './src/routes/routes';
+import Routes from './src/routes/index.js';
 
 import { useEffect } from 'react';
 import * as SplashScreen from 'expo-splash-screen';
