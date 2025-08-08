@@ -47,8 +47,10 @@ function AbaCalendar(props) {
 
     useEffect(() => {
         setIdTecnico(user.id_tecnico);
+    }, [user]);
+    useEffect(() => {
         LoadData();
-    }, []);
+    }, [user]);
 
     //     useEffect(() => {
     //     if (user?.id_tecnico) {
